@@ -1,0 +1,9 @@
+# Preserve byte-exact provenance for saved inputs and outputs.
+* text=auto
+*.csv -text
+*.json -text
+*.sql -text
+*.ipynb -text
+*.joblib binary
+*.pbix binary
+*.png binary
