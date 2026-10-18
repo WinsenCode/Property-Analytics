@@ -1,0 +1,36 @@
+{
+  "status": "passed_programmatic_checks",
+  "database": "property_analytics_database",
+  "postgresql_version": "18.6",
+  "source_sha256": "02d5580da2ef7f0dd69effdf68f59a5a6788fe4f55533dab3e9e035d4bd4586e",
+  "rows_compared": 21613,
+  "clean_columns_compared": 28,
+  "checks": {
+    "reference_source_match": true,
+    "database_connection": true,
+    "schema_verified": true,
+    "raw_cells_equal_csv": true,
+    "raw_quality_passed": true,
+    "duplicate_checks_match_python": true,
+    "domain_checks_match_python": true,
+    "clean_summary_matches": true,
+    "all_clean_cells_match_python": true,
+    "analytic_views_match_python": true
+  },
+  "sql_sha256": {
+    "0_schema.sql": "82dfa42c04d2c717660a1f16a23bb5e60da1ab1c27383162b062a9238d62564a",
+    "1_quality_checks.sql": "07807aefdb3bc295302284c695d7fdfd2c47a63780448614c7b579735a1b0c77",
+    "2_clean_view.sql": "3f4a1c8c76c318aef8ca68d336c7193c5a62518d2ff464cba85f8cc8fe08314d",
+    "3_business_kpis.sql": "bd8705904138caef253e2276f58af1dd1a38ad8c03762a5bab454716a48038e0",
+    "4_validate_clean.sql": "f6a7eed376b2a1aecb69c485aae0ec870f545213ec6c0f7c75cbd7a1720dff39"
+  },
+  "python": "3.10.9",
+  "packages": {
+    "pandas": "2.3.3",
+    "numpy": "2.2.6",
+    "SQLAlchemy": "2.0.54",
+    "psycopg": "3.3.6",
+    "python-dotenv": "1.2.3"
+  },
+  "business_interpretations": "Review separately in docs/business_insights.md"
+}

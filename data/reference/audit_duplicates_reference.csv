@@ -1,0 +1,9 @@
+check_name,count
+full_row_duplicates,0
+unique_property_ids,21436
+property_ids_seen_more_than_once,176
+extra_rows_after_first_id,177
+max_transactions_per_property,3
+duplicate_id_date,0
+same_all_except_id_date,5
+same_price_and_living_area,2031

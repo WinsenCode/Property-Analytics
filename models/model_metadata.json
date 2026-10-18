@@ -1,0 +1,103 @@
+{
+  "selected_model": "random_forest",
+  "fitted_on": "train + validation only",
+  "fit_rows": 16861,
+  "fit_last_date": "2015-02-28",
+  "source_sha256": "02d5580da2ef7f0dd69effdf68f59a5a6788fe4f55533dab3e9e035d4bd4586e",
+  "saved_notebook_code_sha256": "147a93564e436fd9fd94a2e343b405dfaae421bd282addbd6a78cedc8bc23ff1",
+  "python": "3.10.9",
+  "packages": {
+    "pandas": "2.3.3",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.7.2",
+    "joblib": "1.6.0",
+    "matplotlib": "3.10.9",
+    "SQLAlchemy": "2.0.54",
+    "psycopg": "3.3.6",
+    "python-dotenv": "1.2.3"
+  },
+  "seed": 42,
+  "model_parameters": {
+    "n_estimators": 200,
+    "max_depth": 20,
+    "min_samples_leaf": 3,
+    "max_features": 1.0,
+    "random_state": 42,
+    "n_jobs": 2
+  },
+  "feature_schema": {
+    "target": "price",
+    "target_unit": "USD",
+    "feature_order": [
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "lat",
+      "long",
+      "house_age_at_sale_years",
+      "was_renovated",
+      "years_since_renovation",
+      "zipcode"
+    ],
+    "numeric_features": [
+      "bedrooms",
+      "bathrooms",
+      "sqft_living",
+      "sqft_lot",
+      "floors",
+      "waterfront",
+      "view",
+      "condition",
+      "grade",
+      "sqft_above",
+      "sqft_basement",
+      "lat",
+      "long",
+      "house_age_at_sale_years",
+      "was_renovated",
+      "years_since_renovation"
+    ],
+    "categorical_features": [
+      "zipcode"
+    ],
+    "categorical_input": "zipcode: five-character string; unseen categories are ignored by the encoder",
+    "numeric_input": "finite floats or np.nan; no infinity",
+    "missing_policy": "median imputation with missing indicators, learned only within the fitted pipeline",
+    "age_policy": "valuation year minus audited built/renovation year; future years masked to NaN",
+    "renovation_policy": "was_renovated = 0 for recorded year 0; years_since_renovation=NaN then; unknown year remains NaN",
+    "excluded_columns": [
+      "bedrooms_raw",
+      "bedrooms_unverified",
+      "date",
+      "id",
+      "row_id",
+      "source_row",
+      "source_sha256",
+      "sqft_living15",
+      "sqft_lot15",
+      "yr_built",
+      "yr_built_raw",
+      "yr_renovated",
+      "yr_renovated_raw"
+    ]
+  },
+  "limitations": [
+    "Historical King County transactions from 2014-2015; not a current-market valuation.",
+    "Full-file EDA and KPI inspection occurred before this modeling split.",
+    "Chronological split permits property-ID overlap; not an ID-disjoint benchmark.",
+    "Historical feature availability at listing time is not established by the source.",
+    "Age features assume a known valuation date; use the same definition at prediction time.",
+    "Price-segment and importance diagnostics are descriptive, not causal or uncertainty intervals.",
+    "Fixed initial candidates; no claim of optimal hyperparameters or production readiness."
+  ],
+  "model_sha256": "5181595eb4bde29ed065dc95a192261c83593a7388cabb5d9bf802f56238df88",
+  "reload_predictions_match": true
+}

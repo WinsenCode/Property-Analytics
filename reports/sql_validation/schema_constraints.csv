@@ -1,0 +1,8 @@
+table_name,constraint_type,validated,definition
+ingestion_log,c,True,CHECK ((source_sha256 ~ '^[0-9a-f]{64}$'::text))
+ingestion_log,c,True,CHECK ((row_count > 0))
+ingestion_log,p,True,PRIMARY KEY (source_sha256)
+raw_property_sales,c,True,CHECK ((source_row > 0))
+raw_property_sales,f,True,FOREIGN KEY (source_sha256) REFERENCES raw.ingestion_log(source_sha256)
+raw_property_sales,p,True,PRIMARY KEY (row_id)
+raw_property_sales,u,True,"UNIQUE (source_sha256, source_row)"

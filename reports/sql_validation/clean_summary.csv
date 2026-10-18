@@ -1,0 +1,2 @@
+n_rows,unique_property_ids,unique_source_rows,bedrooms_null,yr_built_null,yr_renovated_null,house_age_null,was_renovated_null,years_since_renovation_null,negative_house_age,negative_renovation_age
+21613,21436,21613,1,12,6,12,6,20705,0,0

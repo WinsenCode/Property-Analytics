@@ -1,0 +1,12 @@
+{
+  "source": "Audited clean reference joined to verified split and saved test predictions; no live database query.",
+  "modeling_report_sha256": "eeea1f79c0027ea7f7b2f7a9402b12f536e6845ca17ddbe3b53430ca7b69702f",
+  "rows": 21613,
+  "unique_properties": 21436,
+  "test_prediction_rows": 4752,
+  "median_price_usd": 450000.0,
+  "test_mae_usd": 76958.4257674911,
+  "csv_sha256": "23d1c6d3e2faa046d356968761612cb8c86c145d039f7ef138a44851ace4ad2d",
+  "refresh": "After rerunning modeling, rerun this command, then refresh Power BI.",
+  "limitation": "Static historical snapshot. Test prediction fields remain blank outside test."
+}

@@ -1,0 +1,38 @@
+{
+  "source_sha256": "02d5580da2ef7f0dd69effdf68f59a5a6788fe4f55533dab3e9e035d4bd4586e",
+  "validation_start_inclusive": "2015-01-01",
+  "test_start_inclusive": "2015-03-01",
+  "split_summary": [
+    {
+      "split": "train",
+      "rows": 14633,
+      "unique_properties": 14599,
+      "first_date": "2014-05-02",
+      "last_date": "2014-12-31"
+    },
+    {
+      "split": "validation",
+      "rows": 2228,
+      "unique_properties": 2228,
+      "first_date": "2015-01-02",
+      "last_date": "2015-02-28"
+    },
+    {
+      "split": "test",
+      "rows": 4752,
+      "unique_properties": 4752,
+      "first_date": "2015-03-01",
+      "last_date": "2015-05-27"
+    }
+  ],
+  "unique_property_id_overlap": {
+    "train_validation": 45,
+    "train_test": 90,
+    "validation_test": 8
+  },
+  "price_segment_thresholds_from_train_only": {
+    "median": 450000.0,
+    "p90": 883000.0
+  },
+  "policy": "Time split for future transactions; property IDs may overlap."
+}

@@ -1,0 +1,198 @@
+{
+  "status": "completed_and_reloaded",
+  "database": {
+    "database": "property_analytics_database",
+    "server_version": "18.6",
+    "read_only": "on"
+  },
+  "input_sha256": {
+    "raw_csv": "02d5580da2ef7f0dd69effdf68f59a5a6788fe4f55533dab3e9e035d4bd4586e",
+    "clean_reference": "e7c82b5f1d84819534a18104d943f2c92f6d03d158c69fdfcdbe145d27d11bcf",
+    "audit_manifest": "c66c837057d52102dc2916eebdb2a30211d2e014c8b7fdc0096e5544c9520247",
+    "step2_report": "1d7d163b190e5027a3313a0447714da3c6ea2744fbd33ed0b35da1b554e77c62"
+  },
+  "sql_sha256": {
+    "0_schema.sql": "82dfa42c04d2c717660a1f16a23bb5e60da1ab1c27383162b062a9238d62564a",
+    "1_quality_checks.sql": "07807aefdb3bc295302284c695d7fdfd2c47a63780448614c7b579735a1b0c77",
+    "2_clean_view.sql": "3f4a1c8c76c318aef8ca68d336c7193c5a62518d2ff464cba85f8cc8fe08314d",
+    "3_business_kpis.sql": "bd8705904138caef253e2276f58af1dd1a38ad8c03762a5bab454716a48038e0",
+    "4_validate_clean.sql": "f6a7eed376b2a1aecb69c485aae0ec870f545213ec6c0f7c75cbd7a1720dff39"
+  },
+  "saved_notebook_code_sha256": "147a93564e436fd9fd94a2e343b405dfaae421bd282addbd6a78cedc8bc23ff1",
+  "python": "3.10.9",
+  "packages": {
+    "pandas": "2.3.3",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.7.2",
+    "joblib": "1.6.0",
+    "matplotlib": "3.10.9",
+    "SQLAlchemy": "2.0.54",
+    "psycopg": "3.3.6",
+    "python-dotenv": "1.2.3"
+  },
+  "rows_verified": 21613,
+  "clean_columns_verified": 28,
+  "split_manifest": {
+    "source_sha256": "02d5580da2ef7f0dd69effdf68f59a5a6788fe4f55533dab3e9e035d4bd4586e",
+    "validation_start_inclusive": "2015-01-01",
+    "test_start_inclusive": "2015-03-01",
+    "split_summary": [
+      {
+        "split": "train",
+        "rows": 14633,
+        "unique_properties": 14599,
+        "first_date": "2014-05-02",
+        "last_date": "2014-12-31"
+      },
+      {
+        "split": "validation",
+        "rows": 2228,
+        "unique_properties": 2228,
+        "first_date": "2015-01-02",
+        "last_date": "2015-02-28"
+      },
+      {
+        "split": "test",
+        "rows": 4752,
+        "unique_properties": 4752,
+        "first_date": "2015-03-01",
+        "last_date": "2015-05-27"
+      }
+    ],
+    "unique_property_id_overlap": {
+      "train_validation": 45,
+      "train_test": 90,
+      "validation_test": 8
+    },
+    "price_segment_thresholds_from_train_only": {
+      "median": 450000.0,
+      "p90": 883000.0
+    },
+    "policy": "Time split for future transactions; property IDs may overlap."
+  },
+  "selection": {
+    "selected_model": "random_forest",
+    "selection_metric": "validation MAE_USD (ascending)",
+    "tie_breakers": [
+      "validation RMSE_USD (ascending)",
+      "model name (ascending)"
+    ],
+    "test_used_for_selection": false,
+    "fixed_candidate_parameters": {
+      "median_baseline": {
+        "strategy": "median"
+      },
+      "ridge": {
+        "alpha": 10.0,
+        "solver": "lsqr",
+        "tol": 0.0001
+      },
+      "random_forest": {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 3,
+        "max_features": 1.0,
+        "random_state": 42,
+        "n_jobs": 2
+      }
+    }
+  },
+  "validation_metrics": [
+    {
+      "model": "random_forest",
+      "fit_rows": 14633,
+      "fit_seconds": 79.36072340000828,
+      "n": 2228,
+      "MAE_USD": 69278.75672323632,
+      "RMSE_USD": 128823.34758788964,
+      "R2": 0.8600613157510966,
+      "MedAE_USD": 38667.94431859115,
+      "negative_predictions": 0,
+      "MAE_improvement_vs_median_pct": 67.72161282321842
+    },
+    {
+      "model": "ridge",
+      "fit_rows": 14633,
+      "fit_seconds": 0.20806809999339748,
+      "n": 2228,
+      "MAE_USD": 97352.88316559648,
+      "RMSE_USD": 151904.6739989563,
+      "R2": 0.8054232705637405,
+      "MedAE_USD": 67956.81140388007,
+      "negative_predictions": 8,
+      "MAE_improvement_vs_median_pct": 54.64130414249864
+    },
+    {
+      "model": "median_baseline",
+      "fit_rows": 14633,
+      "fit_seconds": 0.005518099991604686,
+      "n": 2228,
+      "MAE_USD": 214628.92908438062,
+      "RMSE_USD": 350607.7735477066,
+      "R2": -0.03655346323240383,
+      "MedAE_USD": 150000.0,
+      "negative_predictions": 0,
+      "MAE_improvement_vs_median_pct": 0.0
+    }
+  ],
+  "test_metrics": [
+    {
+      "role": "selected_model",
+      "model": "random_forest",
+      "fit_rows": 16861,
+      "n": 4752,
+      "MAE_USD": 76958.4257674911,
+      "RMSE_USD": 139854.33979495673,
+      "R2": 0.8577655608337204,
+      "MedAE_USD": 44465.895815662676,
+      "negative_predictions": 0,
+      "MAE_improvement_vs_median_pct": 66.0410904404129
+    },
+    {
+      "role": "reference_baseline",
+      "model": "median_baseline",
+      "fit_rows": 16861,
+      "n": 4752,
+      "MAE_USD": 226622.19360269362,
+      "RMSE_USD": 385509.10394782166,
+      "R2": -0.08074229230467744,
+      "MedAE_USD": 149075.0,
+      "negative_predictions": 0,
+      "MAE_improvement_vs_median_pct": 0.0
+    }
+  ],
+  "reload_predictions_match": true,
+  "limitations": [
+    "Historical King County transactions from 2014-2015; not a current-market valuation.",
+    "Full-file EDA and KPI inspection occurred before this modeling split.",
+    "Chronological split permits property-ID overlap; not an ID-disjoint benchmark.",
+    "Historical feature availability at listing time is not established by the source.",
+    "Age features assume a known valuation date; use the same definition at prediction time.",
+    "Price-segment and importance diagnostics are descriptive, not causal or uncertainty intervals.",
+    "Fixed initial candidates; no claim of optimal hyperparameters or production readiness."
+  ],
+  "output_sha256": {
+    "reports/modeling/split_assignments.csv": "83f1d5552c0eb6603f5ef84aac1b0e9321b4138c3f18fa6ebc7dcbad311414a5",
+    "reports/modeling/feature_audit.csv": "6f52ccb0a5cc234ed6179cc21aa4a1dc55fd9c4ed872aef503b92ef7225e5482",
+    "reports/modeling/validation_metrics.csv": "8e5984343234fda97e974248c9cb23efc5e5940f4f70c16815d6014d954a2fe2",
+    "reports/modeling/test_metrics.csv": "a8a0a0e1f3d4ea65e560afea4bd37e89e53ba47836a3918fa953024665ec35a9",
+    "reports/modeling/validation_predictions.csv": "0fbddfb47679343202b05b11050495445eb30fe1f89892449341df277ad24d1b",
+    "reports/modeling/test_predictions.csv": "e49b4ec4ef54e95b51f0918a77617ecea0d5ecbcc4a908bb18eb41fa58f4a8e1",
+    "reports/modeling/validation_permutation_importance.csv": "4694d46d35b54256da339c0e6ee2a10c9d094a00c49df7e95899aaf4b227f12b",
+    "reports/modeling/validation_errors_by_price_segment.csv": "d363e77ce3489ce153cc8d9575ff1afc0e7630666ff0d68868271f9751713834",
+    "reports/modeling/validation_errors_by_zipcode.csv": "4324e35b7a77173c89fbc09b0501001e7e27990e6ac8ff34e447dd9fa138dd20",
+    "reports/modeling/validation_errors_by_waterfront.csv": "59afd027ac5ed1eaa6b3875b18aab73edb2b500bb963f871ba702a2cafb3f0eb",
+    "reports/modeling/validation_errors_by_property_history.csv": "dbc099043ce3441cc6adee27f387d5ac0c31510276720988523762bc5cbaffc9",
+    "reports/modeling/test_errors_by_price_segment.csv": "a847d291d818c86c539bec017a60a8c61aeddd26ba6abc23c0f00cbd2110f1e2",
+    "reports/modeling/test_errors_by_zipcode.csv": "b4c47927af7730f13cb7b8937ac27cad5f3e7a9ab493d923bed062f4a6f60717",
+    "reports/modeling/test_errors_by_waterfront.csv": "618f5ec2e7bf6f1285bbed98a363cb36e9fe2b713750eafbccc314d5d42fccbe",
+    "reports/modeling/test_errors_by_property_history.csv": "8792281574c96244c8b72cdc86582fa028f4044cea2c743d7a3afc197eb87a96",
+    "reports/modeling/split_manifest.json": "3114f24d010b650107c93dd633a3171d56cbc921e0b09b6b0dcbec2a877cb153",
+    "reports/modeling/feature_schema.json": "96fe0b3c8b72771830c9d3975501bc13c359abdb87b66c7caa398b0350f43c15",
+    "reports/modeling/validation_mae.png": "05cfff6e4c3d5e5119faffe7c009fa8f62db128fb22d8c2599e03ac1998eec21",
+    "reports/modeling/test_diagnostics.png": "93cbd96a92c774efaeeef48c0fe07c5b7129b26c403e97abdf5772ba872d3a07",
+    "reports/modeling/validation_permutation_importance.png": "ef40e4b8464df6ae876da10c5e211197ebb202763b0b28fdd841e66106c6d21c",
+    "models/property_price_pipeline.joblib": "5181595eb4bde29ed065dc95a192261c83593a7388cabb5d9bf802f56238df88",
+    "models/model_metadata.json": "c33cef011adc03709bea8248aa5dccdd652660bd730370afe19649b5f6c95b7f"
+  }
+}
